@@ -80,7 +80,7 @@ class OpportunityAnalysis(BaseModel):
     
     # Metadata
     analysis_timestamp: str = Field(..., description="Timestamp del análisis")
-    model_used: str = Field(default="DeepSeek-R1", description="Modelo de IA usado")
+    model_used: str = Field(default="GPT-4o-mini", description="Modelo de IA usado")
     confidence_score: float = Field(default=0.0, ge=0, le=1, description="Score de confianza del análisis")
 
 

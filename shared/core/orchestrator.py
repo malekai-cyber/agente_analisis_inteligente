@@ -240,7 +240,7 @@ class OpportunityOrchestrator:
                 "metadata": {
                     "processed_at": datetime.utcnow().isoformat(),
                     "processing_time_seconds": round(processing_time, 2),
-                    "model_used": "DeepSeek-R1",
+                    "model_used": "GPT-4o-mini",
                     "teams_evaluated": len(teams)
                 }
             }

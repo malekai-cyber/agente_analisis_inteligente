@@ -347,14 +347,16 @@ def generate_opportunity_card(
         # ========================================
         # 🔗 ACCIONES
         # ========================================
+        # Acciones deshabilitadas temporalmente
+        # TODO: Rehabilitar cuando se implemente correctamente la URL del PDF
         actions = []
         
-        if pdf_url:
-            actions.append({
-                "type": "Action.OpenUrl",
-                "title": "📄 Descargar PDF",
-                "url": pdf_url
-            })
+        # if pdf_url:
+        #     actions.append({
+        #         "type": "Action.OpenUrl",
+        #         "title": "📄 Descargar PDF",
+        #         "url": pdf_url
+        #     })
         
         # ========================================
         # 📊 FOOTER - Confianza del Análisis
@@ -367,7 +369,7 @@ def generate_opportunity_card(
             "items": [
                 {
                     "type": "TextBlock",
-                    "text": f"🤖 Confianza del análisis: {confidence_pct}% • Modelo: DeepSeek-R1",
+                    "text": f"🤖 Confianza del análisis: {confidence_pct}% • Modelo: GPT-4o-mini",
                     "size": "Small",
                     "isSubtle": True,
                     "horizontalAlignment": "Right"
