@@ -5,13 +5,13 @@
     "FUNCTIONS_WORKER_RUNTIME": "python",
     
     "AZURE_OPENAI_ENDPOINT": "https://your-openai-resource.openai.azure.com/",
-    "AZURE_OPENAI_API_KEY": "your-openai-api-key",
-    "AZURE_OPENAI_DEPLOYMENT_NAME": "DeepSeek-R1",
-    "AZURE_OPENAI_API_VERSION": "2024-12-01-preview",
+    "AZURE_OPENAI_KEY": "your-openai-api-key",
+    "AZURE_OPENAI_DEPLOYMENT_NAME": "gpt-4o-mini",
+    "AZURE_OPENAI_API_VERSION": "2024-10-21",
     
     "AZURE_SEARCH_ENDPOINT": "https://your-search-service.search.windows.net",
     "AZURE_SEARCH_KEY": "your-search-api-key",
-    "AZURE_SEARCH_INDEX_NAME": "teams-knowledge-base",
+    "AZURE_SEARCH_INDEX_TEAMS": "torres-index",
     
     "AZURE_STORAGE_CONNECTION_STRING": "DefaultEndpointsProtocol=https;AccountName=your-storage;AccountKey=your-key;EndpointSuffix=core.windows.net",
     "AZURE_STORAGE_CONTAINER_NAME": "analysis-pdfs",
@@ -21,6 +21,6 @@
     "COSMOS_DATABASE_NAME": "opportunity-analysis",
     "COSMOS_CONTAINER_NAME": "analysis-records",
     
-    "DYNAMICS_ENVIRONMENT_URL": "https://your-org.crm2.dynamics.com"
+    "KEY_VAULT_URL": "https://your-keyvault.vault.azure.net/"
   }
 }

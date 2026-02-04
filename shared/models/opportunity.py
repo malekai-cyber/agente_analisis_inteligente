@@ -63,14 +63,6 @@ class OpportunityPayload(BaseModel):
         extra = "allow"  # Permite campos adicionales no definidos
     
     @property
-    def dynamics_url(self) -> str:
-        """Genera URL directa a la oportunidad en Dynamics 365"""
-        # URL base configurable desde environment
-        import os
-        base_url = os.getenv("DYNAMICS_ENVIRONMENT_URL", "https://org.crm2.dynamics.com")
-        return f"{base_url}/main.aspx?etn=opportunity&id={self.opportunityid}&pagetype=entityrecord"
-    
-    @property
     def clean_description(self) -> str:
         """Retorna la descripción funcional limpiando HTML si existe"""
         text = self.cr807_descripciondelrequerimientofuncional or self.description or ""
@@ -137,10 +129,6 @@ class OpportunityPayload(BaseModel):
             sections.append("## Requerimiento Técnico")
             sections.append(self._clean_html(self.cr807_descripciondelrequerimientotecnico))
             sections.append("")
-        
-        # URL de referencia
-        sections.append("---")
-        sections.append(f"**URL Dynamics:** {self.dynamics_url}")
         
         return "\n".join(sections)
     

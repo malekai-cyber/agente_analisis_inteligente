@@ -140,9 +140,7 @@ Se mantienen las 13 torres del proyecto anterior:
   "AZURE_SEARCH_INDEX_TEAMS": "teams-knowledge-base",
   
   "AZURE_STORAGE_CONNECTION_STRING": "...",
-  "AZURE_STORAGE_CONTAINER_NAME": "analysis-pdfs",
-  
-  "DYNAMICS_ENVIRONMENT_URL": "https://org4a69e9f4.crm2.dynamics.com"
+  "AZURE_STORAGE_CONTAINER_NAME": "analysis-pdfs"
 }
 ```
 
@@ -229,7 +227,6 @@ Invoke-RestMethod -Uri "http://localhost:7071/api/analyze" -Method POST -Body $p
 
 - **Repositorio anterior**: PerxiaSolverApp
 - **Nuevo repositorio**: https://github.com/malekai-cyber/agente_analisis_inteligente.git
-- **Dynamics 365 Environment**: https://org4a69e9f4.crm2.dynamics.com
 
 ---
 

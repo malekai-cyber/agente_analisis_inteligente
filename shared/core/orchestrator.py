@@ -151,7 +151,6 @@ class OpportunityOrchestrator:
                         "id": f"opp-{opportunity.opportunityid}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
                         "opportunity_id": opportunity.opportunityid,
                         "opportunity_name": opportunity.name,
-                        "opportunity_url": opportunity.dynamics_url,
                         "event_type": opportunity.event_type,
                         "analysis": analysis_result,
                         "processed_at": datetime.utcnow().isoformat(),
@@ -180,7 +179,6 @@ class OpportunityOrchestrator:
                     metadata={
                         "opportunity_id": opportunity.opportunityid,
                         "opportunity_name": opportunity.name,
-                        "opportunity_url": opportunity.dynamics_url,
                         "generated_at": datetime.utcnow().isoformat()
                     }
                 )
@@ -201,7 +199,6 @@ class OpportunityOrchestrator:
             adaptive_card = generate_opportunity_card(
                 opportunity_id=opportunity.opportunityid,
                 opportunity_name=opportunity.name,
-                opportunity_url=opportunity.dynamics_url,
                 analysis_data=analysis_result,
                 pdf_url=pdf_url
             )
@@ -217,7 +214,6 @@ class OpportunityOrchestrator:
                 "success": True,
                 "opportunity_id": opportunity.opportunityid,
                 "opportunity_name": opportunity.name,
-                "opportunity_url": opportunity.dynamics_url,
                 "event_type": opportunity.event_type,
                 
                 "analysis": {

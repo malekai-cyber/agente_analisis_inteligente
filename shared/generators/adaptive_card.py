@@ -54,7 +54,6 @@ def _truncate_text(text: str, max_length: int = 500) -> str:
 def generate_opportunity_card(
     opportunity_id: str,
     opportunity_name: str,
-    opportunity_url: str,
     analysis_data: Dict[str, Any],
     pdf_url: Optional[str] = None
 ) -> Dict[str, Any]:
@@ -64,7 +63,6 @@ def generate_opportunity_card(
     Args:
         opportunity_id: ID de la oportunidad
         opportunity_name: Nombre de la oportunidad
-        opportunity_url: URL de la oportunidad en Dynamics 365
         analysis_data: Datos del análisis de IA
         pdf_url: URL del PDF generado (opcional)
         
@@ -350,13 +348,6 @@ def generate_opportunity_card(
         # 🔗 ACCIONES
         # ========================================
         actions = []
-        
-        if opportunity_url:
-            actions.append({
-                "type": "Action.OpenUrl",
-                "title": "🔗 Ver en Dynamics 365",
-                "url": opportunity_url
-            })
         
         if pdf_url:
             actions.append({

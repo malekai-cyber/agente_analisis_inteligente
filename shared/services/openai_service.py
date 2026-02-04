@@ -1,6 +1,7 @@
 """
-Servicio para Azure OpenAI con DeepSeek-R1
+Servicio para Azure OpenAI con GPT-4o-mini
 Motor de razonamiento e inteligencia del agente
+Optimizado para bajo costo y respuestas concretas
 """
 
 import os
@@ -8,24 +9,26 @@ import logging
 import json
 import re
 from typing import List, Dict, Any, Optional
-from openai import OpenAI
+from openai import AzureOpenAI
 
 
 class OpenAIService:
-    """Servicio para Azure AI Foundry (DeepSeek-R1)"""
+    """Servicio para Azure OpenAI (GPT-4o-mini)"""
     
     def __init__(self):
         self.endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
         self.key = os.getenv("AZURE_OPENAI_KEY") or os.getenv("AZURE_OPENAI_API_KEY")
-        self.deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "DeepSeek-R1")
+        self.deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o-mini")
+        self.api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21")
         
         if not self.endpoint or not self.key:
             raise ValueError("AZURE_OPENAI_ENDPOINT y AZURE_OPENAI_KEY/AZURE_OPENAI_API_KEY son requeridos")
         
-        # Azure AI Foundry es compatible con OpenAI SDK estándar
-        self.client = OpenAI(
-            base_url=self.endpoint,
-            api_key=self.key
+        # Cliente de Azure OpenAI
+        self.client = AzureOpenAI(
+            azure_endpoint=self.endpoint,
+            api_key=self.key,
+            api_version=self.api_version
         )
         
         logging.info(f"✅ OpenAIService inicializado: {self.deployment}")

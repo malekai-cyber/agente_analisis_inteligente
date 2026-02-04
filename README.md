@@ -92,9 +92,7 @@ Copia `local.settings.json.example` a `local.settings.json` y configura:
     "AZURE_SEARCH_INDEX_TEAMS": "teams-index",
     
     "AZURE_STORAGE_CONNECTION_STRING": "your-storage-connection",
-    "AZURE_STORAGE_CONTAINER_NAME": "analysis-pdfs",
-    
-    "DYNAMICS_ENVIRONMENT_URL": "https://your-org.crm2.dynamics.com"
+    "AZURE_STORAGE_CONTAINER_NAME": "analysis-pdfs"
   }
 }
 ```
