@@ -3,6 +3,7 @@ Orquestador principal para el análisis inteligente de oportunidades
 Coordina el flujo completo desde la recepción del payload hasta la respuesta
 """
 
+import json
 import logging
 from datetime import datetime
 from typing import Dict, Any, Optional
@@ -24,7 +25,7 @@ class OpportunityOrchestrator:
     1. Recibir payload de Power Automate
     2. Validar y parsear datos de oportunidad
     3. Buscar equipos relevantes en Azure AI Search
-    4. Analizar con DeepSeek-R1
+    4. Analizar con Azure OpenAI (gpt-4o-mini)
     5. Generar PDF del análisis
     6. Guardar en Cosmos DB
     7. Generar Adaptive Card para Teams
@@ -106,7 +107,7 @@ class OpportunityOrchestrator:
             # ========================================
             # PASO 4: Análisis con IA
             # ========================================
-            logging.info("🧠 Paso 4: Analizando con DeepSeek-R1...")
+            logging.info("🧠 Paso 4: Analizando con Azure OpenAI...")
             
             analysis_result = self.openai_service.analyze_opportunity(
                 opportunity_text=analysis_text,
@@ -206,7 +207,29 @@ class OpportunityOrchestrator:
             logging.info("✅ Adaptive Card generado")
             
             # ========================================
-            # PASO 9: Construir respuesta
+            # PASO 9: Extraer líderes de torre únicos
+            # ========================================
+            tower_leaders = []
+            seen_leaders = set()
+            for team in enriched_teams:
+                leader = team.get("team_lead", "")
+                email = team.get("team_lead_email", "")
+                tower = team.get("tower", "")
+                team_name = team.get("team_name", "")
+                
+                if leader and leader not in seen_leaders:
+                    seen_leaders.add(leader)
+                    tower_leaders.append({
+                        "tower": tower,
+                        "team_name": team_name,
+                        "leader_name": leader,
+                        "leader_email": email
+                    })
+            
+            logging.info(f"✅ {len(tower_leaders)} líderes de torre identificados")
+            
+            # ========================================
+            # PASO 10: Construir respuesta
             # ========================================
             processing_time = (datetime.utcnow() - start_time).total_seconds()
             

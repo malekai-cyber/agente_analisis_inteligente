@@ -235,7 +235,7 @@ REGLAS IMPORTANTES:
         except:
             pass
         
-        # Remover tags de razonamiento de DeepSeek-R1 si existen
+        # Remover tags de razonamiento si existen (compatibilidad con modelos avanzados)
         text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
         text = text.strip()
         
